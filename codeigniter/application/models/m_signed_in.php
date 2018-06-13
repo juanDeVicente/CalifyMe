@@ -45,25 +45,35 @@ class m_signed_in extends CI_Model
 
     }
 
-
-    function sign_student_group($id_group, $id_class){
+    //Receives an array of students and creates a group with them.
+    function sign_student_group($id_student_array, $id_class, $id_group){
 
         $this->db->trans_start();
 
 
-        $this -> db -> select('id_student');
-        $this -> db -> from('SIGNED_IN');
-        $this -> db -> where('id_class', $id_class);
-
-        $query = $this->db->get();
-
-        foreach ($query->result() as $row)
+        foreach ($id_student_array as $student_id)
         {
-            $this->db->set('id_group');
-            $this->db->where('id_student', $row);
+            $this->db->set('id_group', $id_group);
+            $this->db->where('id_student', $student_id);
+            $this->db->where('id_class', $id_class);
             $this->db->update('SIGNED_IN');
         }
 
         $this->db->transt_complete();
     }
+
+
+    function get_students_class($id_class){
+
+        $this->db->select('id_alumno');
+        $this->db->from('SIGNED_IN');
+        $this->db->where('id_class', $id_class);
+
+        $query = $this->db->get();
+
+
+        return $this->db->result();
+    }
+
+
 }

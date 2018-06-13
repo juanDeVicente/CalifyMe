@@ -50,7 +50,7 @@ class m_class_teacher extends CI_Model
     function delete_class($id_class)
     {
         $this->db->trans_start();
-        $this->db->where('id_class',$id_class);
+        $this->db->where('id',$id_class);
         $this->db->delete('class');
         $this->db->trans_complete();
     }
