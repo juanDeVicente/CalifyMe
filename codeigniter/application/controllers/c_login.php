@@ -24,8 +24,7 @@ class C_login extends CI_Controller
 
         if ($result == false)
             $this->redirect();
-        else
-        {
+        else {
             $user_session_data = array
             (
                 'id_user' => $result->id_user,
@@ -40,24 +39,28 @@ class C_login extends CI_Controller
             {
                 $this->load->model('m_class_teacher');
                 $teacher_classes = $this->m_class_teacher->get_classes($_SESSION['id_user']);
+                $grades = $this->m_class_teacher->get_all_grades();
                 $data['classes'] = array();
 
-                foreach ($teacher_classes as $class)
+                if ($teacher_classes != FALSE && $grades != FALSE)
                 {
-                    $array = array();
-                    $array['name'] = $class->class_name;
-                    $array['grade'] = $class->grade;
-                    $array['id_class'] = $class->id_class;
-                    array_push($data['classes'],$array);
-                }
+                    foreach ($teacher_classes as $class)
+                    {
+                        $array = array();
+                        $array['name'] = $class->class_name;
+                        $array['grade'] = $class->grade;
+                        $array['id_class'] = $class->id_class;
+                        array_push($data['classes'], $array);
+                    }
 
-                $data['counter'] = 1;
-                $data['grades'] = array();
-                $grades = $this->m_class_teacher->get_all_grades();
-                foreach ($grades as $grade)
-                    if($grade->grade != 0)
-                        array_push($data['grades'],$grade->grade);
+                    $data['counter'] = 1;
+                    $data['grades'] = array();
+                    foreach ($grades as $grade)
+                        if ($grade->grade != 0)
+                            array_push($data['grades'], $grade->grade);
+                }
                 $this->load->view('v_class_teacher', $data);
+
             }
             else if ($_SESSION['role'] == 1) //El 1 es un alumno
             {

@@ -45,7 +45,11 @@ class m_class_teacher extends CI_Model
         $this->db->select('grade');
         $this->db->from('USER');
 
-        return $this->db->get()->result();
+        $query = $this->db->get();
+        if($query->num_rows() == 0)
+            return FALSE;
+        return $query->result();
+
     }
     function delete_class($id_class)
     {

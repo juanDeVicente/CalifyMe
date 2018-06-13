@@ -87,7 +87,8 @@ insert into USER values
 insert into CLASS values
 (null, 'Ciencias', 00001),
 (null, 'Letras', 00004),
-(null, 'Artes', 00004);
+(null, 'Artes', 00004),
+(null, 'Filosofia', 00004);
 
 insert into GROUPS values
 (null, 'grupo1', 11111),

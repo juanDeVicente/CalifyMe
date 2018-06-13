@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/html">
-
+<script>
+var id_class_to_delete;
+function set_current_class(id_class)
+{
+    id_class_to_delete = id_class;
+}
+function get_current_class()
+{
+    return id_class_to_delete;
+}
+</script>
 <head>
     <title>CalifyMe</title>
     <link rel="stylesheet" type="text/css" href="califyTemplate.css">
@@ -161,9 +171,10 @@
             </div>
         </div>
 
-        <?php if (!empty($classes)): ?>
-            <?php foreach ($classes as $class): ?>
-                <?php if ($counter % 3 == 0): ?>
+        <?php $id_class = 0;
+        if (!empty($classes)):
+            foreach ($classes as $class):
+                if ($counter % 3 == 0): ?>
                     <div class="row">
                 <?php endif; ?>
                 <div class="col-md-4 col-sm-12">
@@ -171,7 +182,7 @@
                         <a href="<?php echo site_url('c_group_student/index/hola') ?>" class="h-10 stylelink">
                             <div class="card-header h-10">
                                 <h5 class="card-title  text-align"><?php echo $class['name']; ?></h5>
-                                <h1><?php echo $class['id_class']; ?></h1>
+                                <h1><?php echo $class['grade']; ?></h1>
                             </div>
                         </a>
                         <div class="card-body">
@@ -181,8 +192,8 @@
                                     <i class="fas fa-calendar-check "></i>
                                 </button>
 
-                                <button type="button" class="btn btn-primary btn-dark" data-toggle="modal"
-                                        data-target="#deleteModal">
+                                <button type="submit" class="btn btn-primary btn-dark" data-toggle="modal"
+                                        data-target="#deleteModal" onclick="set_current_class(<?php echo $class['id_class']?>)"</button>
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
                             </div>
@@ -190,8 +201,8 @@
                     </div>
                 </div>
                 <?php if ($counter % 3 == 2): ?>
-                    </div>
-                <?php endif;
+                </div>
+            <?php endif;
                 $counter++;
             endforeach;
         endif; ?>
@@ -211,7 +222,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-primary"
-                        onclick="location.href='<?php echo site_url(); ?>/c_class_teacher/drop_class/'">Yes
+                        onclick="location.href='<?php echo site_url(); ?>/c_class_teacher/drop_class/'+get_current_class()">Yes
                 </button>
             </div>
         </div>
