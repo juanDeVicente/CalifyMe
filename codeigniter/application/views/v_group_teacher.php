@@ -52,7 +52,7 @@
                     <?php endif; ?>
                     <div class="col-md-4 col-sm-12">
                         <div class="card h-10 text-center">
-                            <a href="<?php echo site_url('c_group_student/index/hola') ?>" class="h-10 stylelink">
+                            <a href="<?php echo site_url('c_group_teacher/index/hola') ?>" class="h-10 stylelink">
                                 <div class="card-header h-10">
                                     <h5 class="card-title  text-align"><?php echo $group['name']; ?></h5>
                                     <h1><?php echo $group['members']; ?></h1>

@@ -34,6 +34,7 @@ class c_class_teacher extends CI_Controller
     {
         $id = $this->uri->segment(3);
         $delete = $this->m_class_teacher->delete_class($id);
-        redirect(base_url().'eliminar');
+
+        //cargar la siguiente vista
     }
 }
