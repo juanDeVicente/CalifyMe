@@ -15,35 +15,35 @@ CREATE TABLE `USER` (
 );
 
 CREATE TABLE `SIGNED_IN` (
-	`id_user` INT(5) NOT NULL,
-	`id_class` INT(5) NOT NULL,
-	`id_group` INT(5) NOT NULL
+	`id_user` INT(5) NOT NULL ON DELETE CASCADE ,
+	`id_class` INT(5) NOT NULL ON DELETE CASCADE,
+	`id_group` INT(5) NOT NULL ON DELETE CASCADE
 );
 
 CREATE TABLE `GROUPS` (
-	`id_group` INT(5) NOT NULL AUTO_INCREMENT,
+	`id_group` INT(5) NOT NULL AUTO_INCREMENT  ON DELETE CASCADE,
 	`name` varchar(30) NOT NULL,
 	`id_class` INT (5) NOT NULL,
 	PRIMARY KEY (`id_group`)
 );
 
 CREATE TABLE `CLASS` (
-	`id_class` INT(5) NOT NULL AUTO_INCREMENT,
+	`id_class` INT(5) NOT NULL AUTO_INCREMENT  ON DELETE CASCADE,
 	`name` varchar(25) NOT NULL UNIQUE,
 	`id_teacher` INT(5) NOT NULL,
 	PRIMARY KEY (`id_class`)
 );
 
 CREATE TABLE `CALIFICATION_BETWEEN_STUDENTS` (
-	`id_group` INT(5) NOT NULL,
-	`id_calificator` INT(5) NOT NULL,
-	`id_calified` INT(5) NOT NULL,
+	`id_group` INT(5) NOT NULL  ON DELETE CASCADE,
+	`id_calificator` INT(5) NOT NULL  ON DELETE CASCADE,
+	`id_calified` INT(5) NOT NULL  ON DELETE CASCADE,
 	`grade` INT(2),
 	PRIMARY KEY (`id_group`,`id_calificator`,`id_calified`)
 );
 
 CREATE TABLE `CALIFICATION` (
-	`id_group` INT(5) NOT NULL AUTO_INCREMENT,
+	`id_group` INT(5) NOT NULL AUTO_INCREMENT  ON DELETE CASCADE,
 	`expiration_date` DATE,
 	`teacher_calification` INT(2),
 	PRIMARY KEY (`id_group`)

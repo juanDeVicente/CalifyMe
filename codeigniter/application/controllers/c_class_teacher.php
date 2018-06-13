@@ -31,7 +31,7 @@ class c_class_teacher extends CI_Controller
 
 
 
-       
+
 
         //Obtener un array con todos los usuarios de la clase
        $id_users = $this->signed_in->get_students_class($id_class);
