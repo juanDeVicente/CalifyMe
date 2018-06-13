@@ -51,6 +51,11 @@ class C_login extends CI_Controller
                 }
 
                 $data['counter'] = 1;
+                $data['grades'] = array();
+                $grades = $this->m_class_teacher->get_all_grades();
+                foreach ($grades as $grade)
+                    if($grade->grade != 0)
+                        array_push($data['grades'],$grade->grade);
                 $this->load->view('v_class_teacher', $data);
             }
             else if ($_SESSION['role'] == 1) //El 1 es un alumno

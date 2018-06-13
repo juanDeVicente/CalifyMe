@@ -26,7 +26,7 @@ class m_class_teacher extends CI_Model
     function create_class($id_user,$name)
     {
         $data = array(
-            'id_class' => nukk,
+            'id_class' => null,
             'name' => $name,
             'id_teacher' => $id_user,
         );
@@ -39,11 +39,19 @@ class m_class_teacher extends CI_Model
 
         return $this->db->get();
     }
+    function get_all_grades()
+    {
+        $this->db->distinct();
+        $this->db->select('grade');
+        $this->db->from('USER');
+
+        return $this->db->get()->result();
+    }
     function delete_class($id_class)
     {
         $this->db->trans_start();
         $this->db->where('id',$id_class);
+        $this->db->delete('class');
         $this->db->trans_complete();
-        return $this->db->delete('class');
     }
 }
