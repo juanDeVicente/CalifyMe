@@ -23,4 +23,21 @@ class m_group_student extends CI_Model
 
         return $this -> db -> get() -> result();
     }
+
+    function create_group($id_class){
+        $nombre = 'Geff';
+
+        $data = array(
+            'id_group' => null,
+            'name' => 'Nombre Random',
+            'id_class' => $id_class,
+        );
+        $this->db->trans_start();
+        $this->db->insert('group',$data);
+        $this->db->trans_complete();
+
+
+        //Quizá esto no sea aceptable
+        return $data['id_grupo'];
+    }
 }
