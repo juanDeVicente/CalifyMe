@@ -8,8 +8,8 @@
 
 class c_group_student extends CI_Controller
 {
-    function index()
+    function index($data)
     {
-
+        print($data);
     }
 }
