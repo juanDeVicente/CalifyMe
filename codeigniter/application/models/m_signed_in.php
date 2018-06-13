@@ -64,5 +64,6 @@ class m_signed_in extends CI_Model
             $this->db->update('SIGNED_IN');
         }
 
+        $this->db->transt_complete();
     }
 }
