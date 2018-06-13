@@ -101,7 +101,7 @@
             <div class="dropdown-menu dropdown-menu-right" ardropdown-menu-rightia-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Change password</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="<?php echo site_url('c_login/index')?>">Logout</a>
             </div>
         </div>
     </div>
@@ -114,28 +114,30 @@
             <h2 class="text-inline">My Groups
             </h2>
         </div>
-        <?php foreach ($groups as $group): ?>
-            <?php if ($counter % 3 == 0): ?>
-                <div class="row">
-            <?php endif; ?>
-            <div class="col-md-4 col-sm-12">
-                <div class="card h-10 text-center">
-                    <a href="#" class="h-10 stylelink">
-                        <div class="card-header h-10">
-                            <h5 class="card-title  text-align"><?php echo $group['name']; ?></h5>
-                            <h1><?php echo $group['calification']; ?></h1>
+        <?php if (!empty($groups)): ?>
+            <?php foreach ($groups as $group): ?>
+                <?php if ($counter % 3 == 0): ?>
+                    <div class="row">
+                <?php endif; ?>
+                <div class="col-md-4 col-sm-12">
+                    <div class="card h-10 text-center">
+                        <a href="<?php echo site_url('c_group_student/index/hola') ?>" class="h-10 stylelink">
+                            <div class="card-header h-10">
+                                <h5 class="card-title  text-align"><?php echo $group['name']; ?></h5>
+                                <h1><?php echo $group['calification']; ?></h1>
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title  text-align"><?php echo $group['date']; ?></h5>
                         </div>
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title  text-align"><?php echo $group['date']; ?></h5>
                     </div>
                 </div>
-            </div>
-            <?php if ($counter % 3 == 0): ?>
-                </div>
-            <?php endif; ?>
-            <?php $counter++; ?>
-        <?php endforeach; ?>
+                <?php if ($counter % 3 == 2): ?>
+                    </div>
+                <?php endif;
+                $counter++; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 </div>
 

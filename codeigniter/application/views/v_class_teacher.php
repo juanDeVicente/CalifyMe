@@ -28,7 +28,7 @@
             <div class="dropdown-menu dropdown-menu-right" ardropdown-menu-rightia-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Change password</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="<?php echo site_url('c_login/redirect')?>">Logout</a>
             </div>
         </div>
     </div>
@@ -80,7 +80,7 @@
             <div class="card h-100 text-center">
                 <a href="#" class="h-100 stylelink">
                     <div class="card-header h-100">
-                        <h5 class="card-title  text-align">Class One</h5>
+                        <h5 class="card-title  text-align"><?php echo $class?></h5>
                     </div>
                 </a>
                 <div class="card-body">
