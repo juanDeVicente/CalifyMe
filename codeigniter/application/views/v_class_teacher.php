@@ -171,7 +171,7 @@
                         <a href="<?php echo site_url('c_group_student/index/hola') ?>" class="h-10 stylelink">
                             <div class="card-header h-10">
                                 <h5 class="card-title  text-align"><?php echo $class['name']; ?></h5>
-                                <h1><?php echo $class['grade']; ?></h1>
+                                <h1><?php echo $class['id_class']; ?></h1>
                             </div>
                         </a>
                         <div class="card-body">
@@ -180,6 +180,7 @@
                                         data-target="#pubishCalificationModal">
                                     <i class="fas fa-calendar-check "></i>
                                 </button>
+
                                 <button type="button" class="btn btn-primary btn-dark" data-toggle="modal"
                                         data-target="#deleteModal">
                                     <i class="fas fa-trash-alt"></i>
@@ -190,10 +191,10 @@
                 </div>
                 <?php if ($counter % 3 == 2): ?>
                     </div>
-                <?php endif; ?>
-                <?php $counter++; ?>
-            <?php endforeach; ?>
-        <?php endif; ?>
+                <?php endif;
+                $counter++;
+            endforeach;
+        endif; ?>
     </div>
 </div>
 <!-- Delete Modal -->
@@ -209,7 +210,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary" onclick="location.href='<?php echo site_url();?>/c_class_teacher/drop_class'">Yes</button>
+                <button type="submit" class="btn btn-primary"
+                        onclick="location.href='<?php echo site_url(); ?>/c_class_teacher/drop_class/'">Yes
+                </button>
             </div>
         </div>
     </div>

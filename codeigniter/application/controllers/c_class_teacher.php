@@ -74,17 +74,13 @@ class c_class_teacher extends CI_Controller
            }
        }
 
-
-
         redirect(base_url("v_class_teacher"), "refresh");
 
 
     }
-    public function drop_class()
+    public function drop_class($id_class)
     {
-        $id = $this->uri->segment(3);
-        $delete = $this->m_class_teacher->delete_class($id);
-
-        //cargar la siguiente vista
+        $this->m_class_teacher->delete_class($id_class);
+        $this->load->view('v_class_teacher',$_SESSION);
     }
 }

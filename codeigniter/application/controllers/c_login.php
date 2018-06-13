@@ -47,6 +47,7 @@ class C_login extends CI_Controller
                     $array = array();
                     $array['name'] = $class->class_name;
                     $array['grade'] = $class->grade;
+                    $array['id_class'] = $class->id_class;
                     array_push($data['classes'],$array);
                 }
 
