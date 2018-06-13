@@ -209,7 +209,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary">Yes</button>
+                        <button type="button" class="btn btn-primary" onClick="c_class_teacher.php/drop_class">Yes</button>
                     </div>
                 </div>
             </div>
@@ -224,12 +224,12 @@
                         <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to publish the
                             califications for this class?</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                            <span aria-hidden="true">&times;</span>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary">Yes</button>
+                        <button type="button" class="btn btn-primary" >Yes</button>
                     </div>
                 </div>
             </div>
@@ -247,7 +247,6 @@
                         </button>
                     </div>
                     <div class="modal-body">
-
                                     <form>
                                         <div class="form-group">
                                             <label for="InputClassName">Class Name</label>
@@ -265,7 +264,9 @@
                                             </div>
                                         </div>
                                     </form>
-
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

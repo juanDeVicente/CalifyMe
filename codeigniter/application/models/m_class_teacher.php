@@ -23,4 +23,27 @@ class m_class_teacher extends CI_Model
             return FALSE;
         return $query->result();
     }
+    function create_class($id_user,$name)
+    {
+        $data = array(
+            'id_class' => nukk,
+            'name' => $name,
+            'id_teacher' => $id_user,
+        );
+        $this->db->insert('class',$data);
+
+        $this->db->select('CLASS.id_class');
+        $this->db->from('CLASS');
+        $this->db->where('name', $name);
+        $this->db->where('id_teacher', $id_user);
+
+        return $this->db->get();
+    }
+    function delete_class($id_class)
+    {
+        $this->db->trans_start();
+        $this->db->where('id',$id_class);
+        $this->db->trans_complete();
+        return $this->db->delete('class');
+    }
 }
