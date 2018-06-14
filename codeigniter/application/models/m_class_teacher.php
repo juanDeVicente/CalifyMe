@@ -23,22 +23,6 @@ class m_class_teacher extends CI_Model
             return FALSE;
         return $query->result();
     }
-    function create_class($id_user,$name)
-    {
-        $data = array(
-            'id_class' => null,
-            'name' => $name,
-            'id_teacher' => $id_user,
-        );
-        $this->db->insert('class',$data);
-
-        $this->db->select('CLASS.id_class');
-        $this->db->from('CLASS');
-        $this->db->where('name', $name);
-        $this->db->where('id_teacher', $id_user);
-
-        return $this->db->get();
-    }
     function get_all_grades()
     {
         $this->db->distinct();
@@ -50,6 +34,16 @@ class m_class_teacher extends CI_Model
             return FALSE;
         return $query->result();
 
+    }
+    function create_class($name_class)
+    {
+        $data = array
+        (
+            'id_class' => null,
+            'name' => $name_class,
+            'id_teacher' => $_SESSION['id_user']
+        );
+        $this->db->insert('CLASS', $data);
     }
     function delete_class($id_class)
     {

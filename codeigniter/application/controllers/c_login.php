@@ -34,7 +34,6 @@ class C_login extends CI_Controller
                 'role' => $result->role
             );
             $this->session->set_userdata($user_session_data);
-
             if ($_SESSION['role'] == 2) //El 2 es un profesor
             {
                 $this->load->model('m_class_teacher');
@@ -59,6 +58,7 @@ class C_login extends CI_Controller
                         if ($grade->grade != 0)
                             array_push($data['grades'], $grade->grade);
                 }
+                $data['id_class'] = 1;
                 $this->load->view('v_class_teacher', $data);
 
             }
@@ -90,6 +90,7 @@ class C_login extends CI_Controller
 
     function redirect()
     {
+        $this->session->sess_destroy();
         redirect(base_url(), c_login);
     }
 }

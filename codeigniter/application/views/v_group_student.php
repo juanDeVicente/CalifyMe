@@ -101,7 +101,7 @@
             <div class="dropdown-menu dropdown-menu-right" ardropdown-menu-rightia-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Change password</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="<?php echo site_url('c_login/redirect') ?>">Logout</a>
             </div>
         </div>
     </div>
@@ -118,20 +118,20 @@
             <?php foreach ($groups as $group): ?>
                 <?php if ($counter % 3 == 0): ?>
                     <div class="row">
-                    <?php endif; ?>
-                    <div class="col-md-4 col-sm-12">
-                        <div class="card h-10 text-center">
-                            <a href="<?php echo site_url('c_group_student/index/hola') ?>" class="h-10 stylelink">
-                                <div class="card-header h-10">
-                                    <h5 class="card-title  text-align"><?php echo $group['name']; ?></h5>
-                                    <h1><?php echo $group['calification']; ?></h1>
-                                </div>
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title  text-align"><?php echo $group['date']; ?></h5>
+                <?php endif; ?>
+                <div class="col-md-4 col-sm-12">
+                    <div class="card h-10 text-center">
+                        <a href="<?php echo site_url('c_calification_student/index') ?>" class="h-10 stylelink">
+                            <div class="card-header h-10">
+                                <h5 class="card-title  text-align"><?php echo $group['name']; ?></h5>
+                                <h1><?php echo $group['calification']; ?></h1>
                             </div>
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title  text-align"><?php echo $group['date']; ?></h5>
                         </div>
                     </div>
+                </div>
                 <?php if ($counter % 3 == 2): ?>
                     </div>
                 <?php endif; ?>
@@ -149,7 +149,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
-
 
 </body>
 

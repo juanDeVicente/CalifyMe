@@ -26,6 +26,34 @@ class m_group_teacher extends CI_Model
 
         return ($this->db->get()->result())[0];
     }
+    function get_id_group($id_class,$name_group)
+    {
+        $this->db->select('id_group');
+        $this->db->from('GROUPS');
+        $this->db->where('id_class', $id_class);
+        $this->db->where('name', $name_group);
+        return (($this->db->get()->result())[0])->id_group;
+    }
+    function create_group($id_class, $name_group)
+    {
+        $data = array
+        (
+            'id_group' => null,
+            'name' => $name_group,
+            'id_class' => $id_class
+        );
+        $this->db->insert('GROUPS', $data);
+    }
+    function add_student_to_group($id_student, $id_class, $id_group)
+    {
+        $data = array
+        (
+            'id_user' => $id_student,
+            'id_class' => $id_class,
+            'id_group' => $id_group
+        );
+        $this->db->insert('SIGNED_IN', $data);
+    }
     function delete_group($id_group)
     {
         $this->db->where('id_group',$id_group);

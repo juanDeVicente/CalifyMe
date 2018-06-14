@@ -11,6 +11,10 @@
     function get_current_class() {
         return id_class_to_delete;
     }
+    function get_class_name()
+    {
+        return document.getElementById("InputClassName").value;
+    }
 </script>
 <head>
     <title>CalifyMe</title>
@@ -139,7 +143,7 @@
             <div class="dropdown-menu dropdown-menu-right" ardropdown-menu-rightia-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Change password</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="<?php echo site_url('c_login/redirect') ?>">Logout</a>
             </div>
         </div>
     </div>
@@ -171,8 +175,7 @@
             </div>
         </div>
 
-        <?php $id_class = 0;
-        if (!empty($classes)):
+        <?php if (!empty($classes)):
             foreach ($classes as $class):
                 if ($counter % 3 == 0): ?>
                     <div class="row">
@@ -273,8 +276,9 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
+                            <label for="inputGrade">Grade</label>
                             <select id="inputGrade" class="form-control">
-                                <option selected>Grade</option>
+                                <option selected></option>
                                 <?php foreach ($grades as $grade): ?>
                                     <option> <?php echo $grade ?></option>
                                 <?php endforeach; ?>
@@ -285,7 +289,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='<?php echo site_url(); ?>/c_class_teacher/create_class/' + get_class_name() + '/<?php echo $id_class?>'">Save changes</button>
                 </div>
             </div>
         </div>

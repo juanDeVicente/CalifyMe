@@ -4,6 +4,7 @@
 <script>
     var id_group_to_delete;
     var id_class;
+
     function set(id_c, id_group) {
         id_class = id_c;
         id_group_to_delete = id_group;
@@ -12,8 +13,13 @@
     function get_group() {
         return id_group_to_delete;
     }
+
     function get_class() {
         return id_class;
+    }
+    function get_group_name()
+    {
+        return document.getElementById("InputGroupName").value;
     }
 </script>
 <head>
@@ -133,7 +139,7 @@
 <!-- navbar -->
 <nav class="navbar fixed-top navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#">CalifyMe</a>
+        <a class="navbar-brand" href="<?php echo site_url('c_class_teacher/index/'); echo $id_class ?>">CalifyMe</a>
         <div class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">
@@ -142,7 +148,7 @@
             <div class="dropdown-menu dropdown-menu-right" ardropdown-menu-rightia-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Change password</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="<?php echo site_url('c_login/redirect') ?>">Logout</a>
             </div>
         </div>
     </div>
@@ -166,6 +172,24 @@
             </h2>
         </div>
 
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <a data-toggle="modal" data-target="#newGroupModal" class="stylelink">
+                    <div class="card h-10 text-center">
+                        <div class="card-header h-10">
+                            <h5 class="card-title text-align">Create Group</h5>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </div>
+                </a>
+                <div class="card-body"></div>
+            </div>
+        </div>
+
         <?php if (!empty($groups)):
             foreach ($groups as $group):
                 if ($counter % 3 == 0): ?>
@@ -173,7 +197,7 @@
                 <?php endif; ?>
                 <div class="col-md-4 col-sm-12">
                     <div class="card h-10 text-center">
-                        <a href="<?php echo site_url('c_group_student/index/hola') ?>" class="h-10 stylelink">
+                        <a href="<?php echo site_url('c_calification_teacher/index/'); echo $group['id_group']. '/'; echo $id_class?>" class="h-10 stylelink">
                             <div class="card-header h-10">
                                 <h5 class="card-title  text-align"><?php echo $group['name']; ?></h5>
                             </div>
@@ -185,7 +209,8 @@
                                     <i class="fas fa-calendar-check "></i>
                                 </button>
                                 <button type="button" class="btn btn-primary btn-dark" data-toggle="modal"
-                                        data-target="#deleteModal" onclick="set(<?php echo $id_class?>,<?php echo $group['id_group']?>)">
+                                        data-target="#deleteModal"
+                                        onclick="set(<?php echo $id_class ?>,<?php echo $group['id_group'] ?>)">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
                             </div>
@@ -215,7 +240,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='<?php echo site_url(); ?>/c_group_teacher/drop_group/'+get_group()+'/'+get_class()">Yes</button>
+                <button type="button" class="btn btn-primary"
+                        onclick="location.href='<?php echo site_url(); ?>/c_group_teacher/drop_group/'+get_group()+'/'+get_class()">
+                    Yes
+                </button>
             </div>
         </div>
     </div>
@@ -235,7 +263,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='<?php echo site_url(); ?>/c_group_teacher/drop_all_groups/<?php echo $id_class?>'">Yes</button>
+                <button type="button" class="btn btn-primary"
+                        onclick="location.href='<?php echo site_url(); ?>/c_group_teacher/drop_all_groups/<?php echo $id_class ?>'">
+                    Yes
+                </button>
             </div>
         </div>
     </div>
@@ -261,6 +292,48 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="newGroupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">New Class</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="InputGroupName">Group Name</label>
+                        <input type="text" name="groupName" class="form-control" id="InputGroupName"
+                               size="50">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="inputGrade">Grade</label>
+                            <select id="inputGrade" class="form-control">
+                                <option selected></option>
+                                <?php foreach ($grades as $grade): ?>
+                                    <option> <?php echo $grade ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"
+                            onclick="location.href='<?php echo site_url(); ?>/c_group_teacher/create_group/<?php echo $id_class ?>/' + get_group_name() + '/111'">
+                        Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- cdn bootstrap -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
         integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"

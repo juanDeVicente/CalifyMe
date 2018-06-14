@@ -8,7 +8,6 @@
 
 class c_group_teacher extends CI_Controller
 {
-
     function __construct()
     {
         parent::__construct();
@@ -29,11 +28,17 @@ class c_group_teacher extends CI_Controller
         $this->m_group_teacher->delete_all_groups($id_class);
         $this->load_model($id_class);
     }
+    function create_group($id_class, $group_name, $students)
+    {
+        $this->m_group_teacher->create_group($id_class, $group_name);
+        foreach ($students as $student)
+            $this->m_group_teacher->add_student_to_group($this->m_group_teacher->get_id_group($id_class,$group_name),$student);
+        $this->load_model($id_class);
+    }
     private function load_model($id_class)
     {
         $groups = $this->m_group_teacher->get_groups_from_class($_SESSION['id_user'],$id_class);
         $data['groups'] = array();
-        print_r($groups);
         foreach ($groups as $group)
         {
             $array = array();
@@ -42,7 +47,7 @@ class c_group_teacher extends CI_Controller
             array_push($data['groups'], $array);
         }
         $data['name'] = $this->m_group_teacher->get_name_of_class($id_class)->name;
-        $data['counter'] = 0;
+        $data['counter'] = 1;
         $data['id_class'] = $id_class;
         $this->load->view('v_group_teacher',$data);
     }

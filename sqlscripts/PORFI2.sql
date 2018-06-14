@@ -30,21 +30,22 @@ CREATE TABLE CLASS (
   id_class   INT(5)      NOT NULL AUTO_INCREMENT,
   name       VARCHAR(25) NOT NULL UNIQUE,
   id_teacher INT(5)      NOT NULL,
-  PRIMARY KEY (id_class)
+  PRIMARY KEY (id_class),
+  grade      INT(1)      NOT NULL
 );
 
 CREATE TABLE CALIFICATION_BETWEEN_STUDENTS (
   id_group       INT(5) NOT NULL,
   id_calificator INT(5) NOT NULL,
   id_calified    INT(5) NOT NULL,
-  grade          INT(2),
+  grade          INT(2) DEFAULT -1,
   PRIMARY KEY (id_group, id_calificator, id_calified)
 );
 
 CREATE TABLE CALIFICATION (
   id_group             INT(5) NOT NULL AUTO_INCREMENT,
   expiration_date      DATE,
-  teacher_calification INT(2),
+  teacher_calification INT(2) DEFAULT -1,
   PRIMARY KEY (id_group)
 );
 
