@@ -2,15 +2,15 @@
 
 <html xmlns="http://www.w3.org/1999/html">
 <script>
-var id_class_to_delete;
-function set_current_class(id_class)
-{
-    id_class_to_delete = id_class;
-}
-function get_current_class()
-{
-    return id_class_to_delete;
-}
+    var id_class_to_delete;
+
+    function set_current_class(id_class) {
+        id_class_to_delete = id_class;
+    }
+
+    function get_current_class() {
+        return id_class_to_delete;
+    }
 </script>
 <head>
     <title>CalifyMe</title>
@@ -179,7 +179,8 @@ function get_current_class()
                 <?php endif; ?>
                 <div class="col-md-4 col-sm-12">
                     <div class="card h-10 text-center">
-                        <a href="<?php echo site_url('c_group_student/index/hola') ?>" class="h-10 stylelink">
+                        <a href="<?php echo site_url('c_group_teacher/index/'. $class['id_class']) ?>"
+                           class="h-10 stylelink">
                             <div class="card-header h-10">
                                 <h5 class="card-title  text-align"><?php echo $class['name']; ?></h5>
                                 <h1><?php echo $class['grade']; ?></h1>
@@ -193,8 +194,10 @@ function get_current_class()
                                 </button>
 
                                 <button type="submit" class="btn btn-primary btn-dark" data-toggle="modal"
-                                        data-target="#deleteModal" onclick="set_current_class(<?php echo $class['id_class']?>)"</button>
-                                    <i class="fas fa-trash-alt"></i>
+                                        data-target="#deleteModal"
+                                        onclick="set_current_class(<?php echo $class['id_class'] ?>)"
+                                </button>
+                                <i class="fas fa-trash-alt"></i>
                                 </button>
                             </div>
                         </div>
@@ -222,7 +225,8 @@ function get_current_class()
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-primary"
-                        onclick="location.href='<?php echo site_url(); ?>/c_class_teacher/drop_class/'+get_current_class()">Yes
+                        onclick="location.href='<?php echo site_url(); ?>/c_class_teacher/drop_class/'+get_current_class()">
+                    Yes
                 </button>
             </div>
         </div>
