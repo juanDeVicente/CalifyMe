@@ -24,7 +24,8 @@ class C_login extends CI_Controller
 
         if ($result == false)
             $this->redirect();
-        else {
+        else
+            {
             $user_session_data = array
             (
                 'id_user' => $result->id_user,
@@ -35,53 +36,10 @@ class C_login extends CI_Controller
             );
             $this->session->set_userdata($user_session_data);
             if ($_SESSION['role'] == 2) //El 2 es un profesor
-            {
-                $this->load->model('m_class_teacher');
-                $teacher_classes = $this->m_class_teacher->get_classes($_SESSION['id_user']);
-                $grades = $this->m_class_teacher->get_all_grades();
-                $data['classes'] = array();
-
-                if ($teacher_classes != FALSE && $grades != FALSE)
-                {
-                    foreach ($teacher_classes as $class)
-                    {
-                        $array = array();
-                        $array['name'] = $class->class_name;
-                        $array['grade'] = $class->grade;
-                        $array['id_class'] = $class->id_class;
-                        array_push($data['classes'], $array);
-                    }
-
-                    $data['counter'] = 1;
-                    $data['grades'] = array();
-                    foreach ($grades as $grade)
-                        if ($grade->grade != 0)
-                            array_push($data['grades'], $grade->grade);
-                }
-                $data['id_class'] = 1;
-                $this->load->view('v_class_teacher', $data);
-
-            }
+                redirect(base_url().'/index.php/c_class_teacher/index/');
             else if ($_SESSION['role'] == 1) //El 1 es un alumno
-            {
-                $this->load->model('m_group_student');
-                $students_groups = $this->m_group_student->get_groups($_SESSION['id_user']);
-                $data['groups'] = array();
-                foreach ($students_groups as $group) {
-                    $array = array();
-                    $array['name'] = $group->group_name . '-' . $group->class_name;
-
-                    if ($group->teacher_calification < 0)
-                        $array['calification'] = '-';
-                    else
-                        $array['calification'] = $group->teacher_calification;
-
-                    $array['date'] = $group->expiration_date;
-                    array_push($data['groups'], $array);
-                }
-                $data['counter'] = 0;
-                $this->load->view('v_group_student', $data);
-            } else if ($_SESSION['role'] == 0) //El 0 es un admin
+                redirect(base_url().'/index.php/c_group_student/index/');
+             else if ($_SESSION['role'] == 0) //El 0 es un admin
                 redirect(str_replace("/codeigniter", "", base_url()) . '/phpmyadmin');
             else
                 print ("La base de datos está to mal");

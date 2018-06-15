@@ -14,23 +14,23 @@ class c_class_teacher extends CI_Controller
         $this->load->model('m_class_teacher');
     }
 
-    function index($id_class)
+    function index()
     {
-        $this->load_model($id_class);
+        $this->load_model();
     }
 
     public function create_class($name_class,$id_class)
     {
         $this->m_class_teacher->create_class($name_class);
-        $this->load_model($id_class);
+        $this->load_model();
     }
 
     public function drop_class($id_class)
     {
         $this->m_class_teacher->delete_class($id_class);
-        $this->load_model($id_class);
+        $this->load_model();
     }
-    private function load_model($id_class)
+    private function load_model()
     {
         $teacher_classes = $this->m_class_teacher->get_classes($_SESSION['id_user']);
         $grades = $this->m_class_teacher->get_all_grades();
@@ -52,7 +52,6 @@ class c_class_teacher extends CI_Controller
                 if ($grade->grade != 0)
                     array_push($data['grades'], $grade->grade);
         }
-        $data['id_class'] = $id_class;
         $this->load->view('v_class_teacher', $data);
     }
 }

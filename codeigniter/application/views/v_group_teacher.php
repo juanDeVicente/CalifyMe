@@ -197,7 +197,7 @@
                 <?php endif; ?>
                 <div class="col-md-4 col-sm-12">
                     <div class="card h-10 text-center">
-                        <a href="<?php echo site_url('c_calification_teacher/index/'); echo $group['id_group']. '/'; echo $id_class?>" class="h-10 stylelink">
+                        <a href="<?php echo site_url('c_calification_teacher/index/'); echo $id_class. '/'; echo $group['id_group']?>" class="h-10 stylelink">
                             <div class="card-header h-10">
                                 <h5 class="card-title  text-align"><?php echo $group['name']; ?></h5>
                             </div>

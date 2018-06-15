@@ -14,16 +14,16 @@ class c_calification_teacher extends CI_Controller
         $this->load->model('m_calification_teacher');
     }
 
-    function index($id_group, $id_class)
+    function index($id_class, $id_group)
     {
-        $this->load_model($id_group, $id_class);
+        $this->load_model($id_class, $id_group);
     }
     function save_calification($id_class, $id_group, $expiration_date, $calification)
     {
         $this->m_calification_teacher($id_group, $expiration_date, $calification);
         $this->load_model($id_class, $id_group);
     }
-    private function load_model($id_group, $id_class)
+    private function load_model($id_class, $id_group)
     {
         $query = $this->m_calification_teacher->get_students($id_group);
         $query2 = $this->m_calification_teacher->get_name_group($id_group);
@@ -77,9 +77,7 @@ class c_calification_teacher extends CI_Controller
                     $average_calification[] = '-';
             }
             else
-            {
                 $average_calification[] = '-';
-            }
         }
         $data['id_students'] = $id_students;
         $data['name_students'] = $name_students;
