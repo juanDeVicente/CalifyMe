@@ -27,6 +27,7 @@ class c_group_student extends CI_Controller
                 $array['calification'] = $group->teacher_calification;
 
             $array['date'] = $group->expiration_date;
+            $array['id_group'] = $group->id_group;
             array_push($data['groups'], $array);
         }
         $data['counter'] = 0;

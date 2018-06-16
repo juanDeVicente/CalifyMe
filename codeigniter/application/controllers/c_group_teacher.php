@@ -21,19 +21,19 @@ class c_group_teacher extends CI_Controller
     function drop_group($id_group, $id_class)
     {
         $this->m_group_teacher->delete_group($id_group);
-        $this->load_model($id_class);
+        redirect(base_url().'index.php/c_group_teacher/index/'.$id_class);
     }
     function drop_all_groups($id_class)
     {
         $this->m_group_teacher->delete_all_groups($id_class);
-        $this->load_model($id_class);
+        redirect(base_url().'index.php/c_group_teacher/index/'.$id_class);
     }
     function create_group($id_class, $group_name, $students)
     {
         $this->m_group_teacher->create_group($id_class, $group_name);
         foreach ($students as $student)
             $this->m_group_teacher->add_student_to_group($this->m_group_teacher->get_id_group($id_class,$group_name),$student);
-        $this->load_model($id_class);
+        redirect(base_url().'index.php/c_group_teacher/index/'.$id_class);
     }
     private function load_model($id_class)
     {

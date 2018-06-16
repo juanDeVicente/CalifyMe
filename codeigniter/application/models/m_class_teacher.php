@@ -14,7 +14,7 @@ class m_class_teacher extends CI_Model
     }
     function get_classes($id_user)
     {
-        $this->db->select('CLASS.name as class_name, grade, id_class');
+        $this->db->select('CLASS.name as class_name, Class.grade, id_class');
         $this->db->from('CLASS');
         $this->db->join('USER', 'id_teacher=id_user');
         $this->db->where('id_teacher', $id_user);
@@ -35,13 +35,14 @@ class m_class_teacher extends CI_Model
         return $query->result();
 
     }
-    function create_class($name_class)
+    function create_class($name_class, $grade)
     {
         $data = array
         (
             'id_class' => null,
             'name' => $name_class,
-            'id_teacher' => $_SESSION['id_user']
+            'id_teacher' => $_SESSION['id_user'],
+            'grade' => $grade
         );
         $this->db->insert('CLASS', $data);
     }

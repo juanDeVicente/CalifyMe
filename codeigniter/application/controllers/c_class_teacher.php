@@ -19,16 +19,16 @@ class c_class_teacher extends CI_Controller
         $this->load_model();
     }
 
-    public function create_class($name_class,$id_class)
+    public function create_class($name_class, $grade)
     {
-        $this->m_class_teacher->create_class($name_class);
-        $this->load_model();
+        $this->m_class_teacher->create_class($name_class, $grade);
+        redirect(base_url().'index.php/c_class_teacher/index/');
     }
 
     public function drop_class($id_class)
     {
         $this->m_class_teacher->delete_class($id_class);
-        $this->load_model();
+        redirect(base_url().'index.php/c_class_teacher/index/');
     }
     private function load_model()
     {

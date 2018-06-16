@@ -14,7 +14,7 @@ class m_group_student extends CI_Model
     }
     function get_groups($id_user)
     {
-        $this->db->select('GROUPS.name AS group_name, CLASS.name AS class_name, expiration_date, teacher_calification');
+        $this->db->select('GROUPS.name AS group_name, CLASS.name AS class_name, expiration_date, teacher_calification, GROUPS.id_group');
         $this->db->from('SIGNED_IN');
         $this->db->join('GROUPS','SIGNED_IN.id_group=GROUPS.id_group');
         $this->db->join('CLASS','SIGNED_IN.id_class=CLASS.id_class');

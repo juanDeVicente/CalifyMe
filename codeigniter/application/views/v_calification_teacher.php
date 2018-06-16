@@ -236,7 +236,7 @@
     <h2 class="text-inline">
         <?php echo $name_group;?>
         <div class="btn" role="group" style="float: right;">
-            <button type="button" class="btn btn-dark" onclick="href.location=''">
+            <button type="button" class="btn btn-dark" onclick="href.location='<?php echo site_url('c_calification_teacher/save_calification/'); echo $id_class.'/'; echo $id_group.'/1-1-2019/'?>'+ get_calification()">
                 <i class="fas fa-save fa-2x"></i>
             </button>
             <button type="button" class="btn btn-dark">

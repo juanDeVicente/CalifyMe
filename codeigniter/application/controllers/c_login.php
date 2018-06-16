@@ -36,9 +36,9 @@ class C_login extends CI_Controller
             );
             $this->session->set_userdata($user_session_data);
             if ($_SESSION['role'] == 2) //El 2 es un profesor
-                redirect(base_url().'/index.php/c_class_teacher/index/');
+                redirect(base_url().'index.php/c_class_teacher/index/');
             else if ($_SESSION['role'] == 1) //El 1 es un alumno
-                redirect(base_url().'/index.php/c_group_student/index/');
+                redirect(base_url().'index.php/c_group_student/index/');
              else if ($_SESSION['role'] == 0) //El 0 es un admin
                 redirect(str_replace("/codeigniter", "", base_url()) . '/phpmyadmin');
             else

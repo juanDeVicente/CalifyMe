@@ -18,7 +18,7 @@
 </head>
 <style type="text/css">
     .h1 {
-        font-size: 400;
+        font-size: 12px;
     }
 
     .fas {
@@ -342,7 +342,7 @@
                 <?php endif; ?>
                 <div class="col-md-6">
                     <h5>Calification for
-                        <?php echo $name_student; ?>
+                        <?php echo $student; ?>
                     </h5>
                 </div>
                 <div class="col-md-2">

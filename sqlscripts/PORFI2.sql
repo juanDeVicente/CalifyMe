@@ -114,9 +114,9 @@ INSERT INTO USER VALUES
   (NULL, 'utad@gmail.com', 1234, 'universita', 'utad', 'flipada', 1, 3);
 
 INSERT INTO CLASS VALUES
-  (NULL, 'Ciencias', 00001),
-  (NULL, 'Letras', 00005),
-  (NULL, 'Artes', 00005);
+  (NULL, 'Ciencias', 00001,1),
+  (NULL, 'Letras', 00005,1),
+  (NULL, 'Artes', 00005,2);
 
 INSERT INTO GROUPS VALUES
   (NULL, 'grupo1', 11111),
@@ -132,7 +132,7 @@ INSERT INTO SIGNED_IN VALUES
   (00005, 11111, 22222),
   (00006, 11112, 22224),
   (00007, 11112, 22224),
-  (00001, 11112, 22224),
+  (00008, 11112, 22224),
   (00008, 11113, 22226),
   (00009, 11113, 22226),
   (00010, 11113, 22226),
@@ -147,3 +147,13 @@ INSERT INTO CALIFICATION VALUES
   (22225, '2019-01-05', -1),
   (22226, '2019-07-14', 10),
   (22227, '2018-10-19', 6);
+INSERT INTO CALIFICATION_BETWEEN_STUDENTS VALUES
+  (22226, 8, 8, 10),
+  (22226, 8, 9, 9),
+  (22226, 8, 10, -1),
+  (22226, 9, 9, 9),
+  (22226, 9, 8, -1),
+  (22226, 9, 10, 5),
+  (22226, 10, 10, 9),
+  (22226, 10, 8, 8),
+  (22226, 10, 9, -1);

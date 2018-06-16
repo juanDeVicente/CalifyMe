@@ -15,6 +15,10 @@
     {
         return document.getElementById("InputClassName").value;
     }
+    function get_grade_class()
+    {
+        return document.getElementById("inputGrade").value
+    }
 </script>
 <head>
     <title>CalifyMe</title>
@@ -32,7 +36,7 @@
 </head>
 <style type="text/css">
     .h1 {
-        font-size: 400;
+        font-size: 12px;
     }
 
     .fas {
@@ -278,7 +282,7 @@
                         <div class="col-md-12">
                             <label for="inputGrade">Grade</label>
                             <select id="inputGrade" class="form-control">
-                                <option selected></option>
+                                <option selected><?php echo $grades[0]?></option>
                                 <?php foreach ($grades as $grade): ?>
                                     <option> <?php echo $grade ?></option>
                                 <?php endforeach; ?>
@@ -289,7 +293,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="location.href='<?php echo site_url(); ?>/c_class_teacher/create_class/' + get_class_name() + '/<?php echo $id_class?>'">Save changes</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='<?php echo site_url(); ?>/c_class_teacher/create_class/' + get_class_name() + '/' + get_grade_class()">Save changes</button>
                 </div>
             </div>
         </div>

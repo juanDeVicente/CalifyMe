@@ -22,7 +22,6 @@ class m_calification_teacher extends CI_Model
     }
     function get_student_name($id_user)
     {
-        print_r($id_user);
         $this->db->select('name');
         $this->db->from('USER');
         $this->db->where('id_user', $id_user);

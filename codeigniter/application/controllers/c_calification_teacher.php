@@ -50,7 +50,8 @@ class c_calification_teacher extends CI_Controller
 
             if(!empty($califications))
             {
-                foreach ($califications as $calification) {
+                foreach ($califications as $calification)
+                {
                     if (empty($calification) || $calification->grade < 0 || $calification->grade > 10)
                         $calification_between_students[$name_students[$i]][] = '-';
                     else
@@ -58,26 +59,20 @@ class c_calification_teacher extends CI_Controller
                 }
             }
             else
-            {
                 for($j = 0; $j < count($id_students) ; $j++)
-                    $calification_between_students[$name_students[$i]][] = '-';
-            }
+                    $calification_between_students[$name_students[$i]][$j] = '-';
         }
         //Calculamos la media
         for ($i = 0; $i < count($id_students); $i++)
         {
-            if(!empty($califications))
-            {
-                $average = 0;
-                for($j=0 ; $j < count($califications) && !empty($califications[$j]) && $califications[$j]->grade >= 0 && $califications[$j]->grade <= 10 ; $j++)
-                    $average+=$califications->grade;
-                if($j == count($califications))
-                    $average_calification[] = $average/$j;
-                else
-                    $average_calification[] = '-';
-            }
+            $average = 0;
+            for($j=0 ; $j < count($id_students) && $calification_between_students[$name_students[$j]][$i] != '-' &&  $calification_between_students[$name_students[$j]][$i] >= 0 &&  $calification_between_students[$name_students[$j]][$i] <= 10 ; $j++)
+                $average+=$calification_between_students[$name_students[$j]][$i];
+            if($j == count($id_students))
+                $average_calification[] = round($average/$j,2);
             else
                 $average_calification[] = '-';
+
         }
         $data['id_students'] = $id_students;
         $data['name_students'] = $name_students;
