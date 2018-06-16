@@ -340,13 +340,19 @@
             <h4 class="text-inline"> You have
                 <?php echo $total_points; ?> to distribute </h4>
         </div>
-        <?php foreach ($student as $student): ?>
-        <?php if ($counter % 3 == 0): ?>
+        <?php foreach ($students
+
+        as $student):
+        if ($counter % 3 == 0): ?>
         <div class="row">
             <?php endif; ?>
             <div class="col-md-6">
                 <h5>Calification for
-                    <?php echo $student['name']; ?>
+                    <?php if ($_SESSION['id_user'] == $student['id_student']):
+                        echo 'you';
+                    else:
+                        echo $student['name'];
+                    endif; ?>
                 </h5>
             </div>
             <div class="col-md-2">
