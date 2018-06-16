@@ -2,19 +2,22 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>CalifyMe</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="C:\Users\pabli\Downloads\OneDrive_1_9-5-2018\logo.png">
     <link rel="stylesheet" type="text/css" href="califyTemplate1.css">
-    <link rel="stylesheet" type="text/css" href="Ver notas profesor.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
-        crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="Ver notas profesor.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+          crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
 </head>
 <style type="text/css">
     .h1 {
@@ -28,7 +31,6 @@
     .dropdown-toggle {
         color: white;
     }
-
 
     .gridsystem {
         margin-top: 7em;
@@ -132,7 +134,6 @@
         padding: -3px;
     }
 
-
     .h1 {
         font-size: 12px;
     }
@@ -149,7 +150,9 @@
         color: white;
     }
 
-    .dropdown-toggle color: white;
+    .dropdown-toggle color: white
+
+    ;
     }
 
     .cuadro {
@@ -301,88 +304,92 @@
 
 <body>
 
-    <!-- navbar -->
-    <nav class="navbar fixed-top navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">CalifyMe</a>
-            <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    <i class="fas fa-user-circle fa-2x"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" ardropdown-menu-rightia-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Change password</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Logout</a>
-                </div>
+<!-- navbar -->
+<nav class="navbar fixed-top navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">CalifyMe</a>
+        <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false">
+                <i class="fas fa-user-circle fa-2x"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" ardropdown-menu-rightia-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Change password</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Logout</a>
             </div>
         </div>
-    </nav>
-
-    <!--Contenido-->
-    <div class="gridsystem">
-        <div class="container">
-            <div class="title-box">
-                <h2 class="text-inline">
-                    <?php echo $name_group;?>
-                    <div class="btn" role="group" style="float: right;">
-                        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#saveCalificationModal">
-                            <i class="fas fa-save fa-2x"></i>
-                        </button>
-                    </div>
-                </h2>
-                <h3 class="text-inline"> Group calification:
-                    <?php echo $group_calification; ?> </h3>
-                <h4 class="text-inline"> You have
-                    <?php echo $total_points; ?> to distribute </h4>
-            </div>
-            <?php foreach ($students as $student): ?>
-            <?php if ($counter % 3 == 0): ?>
-            <div class="row">
-                <?php endif; ?>
-                <div class="col-md-6">
-                    <h5>Calification for
-                        <?php echo $student; ?>
-                    </h5>
-                </div>
-                <div class="col-md-2">
-                    <input type="number" name="teacher_calification" class="form-control" id="teacher_calification" size="5" min="0" max="10">
-                </div>
-                <div class="col-md-4"></div>
-            </div>
-            <?php if ($counter % 3 == 2): ?>
-        </div>
-        <?php endif; ?>
-        <?php $counter++; ?>
-        <?php endforeach; ?>
     </div>
+</nav>
 
-
-
-    <!-- Save Modal -->
-    <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to save this califications?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+<!--Contenido-->
+<div class="gridsystem">
+    <div class="container">
+        <div class="title-box">
+            <h2 class="text-inline">
+                <?php echo $name_group; ?>
+                <div class="btn" role="group" style="float: right;">
+                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#saveCalificationModal">
+                        <i class="fas fa-save fa-2x"></i>
                     </button>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Yes</button>
-                </div>
+            </h2>
+            <h3 class="text-inline"> Group calification:
+                <?php echo $group_calification; ?> </h3>
+            <h4 class="text-inline"> You have
+                <?php echo $total_points; ?> to distribute </h4>
+        </div>
+        <?php foreach ($student as $student): ?>
+        <?php if ($counter % 3 == 0): ?>
+        <div class="row">
+            <?php endif; ?>
+            <div class="col-md-6">
+                <h5>Calification for
+                    <?php echo $student['name']; ?>
+                </h5>
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="teacher_calification" class="form-control" id="teacher_calification" size="5"
+                       min="0" max="10">
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <?php if ($counter % 3 == 2): ?>
+    </div>
+    <?php endif;
+    $counter++;
+    endforeach; ?>
+</div>
+
+
+<!-- Save Modal -->
+<div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to save this califications?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Yes</button>
             </div>
         </div>
     </div>
-    <!-- Save Modal -->
-    <?php if ($points_asigned > $total_points): ?>
-    <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<!-- Save Modal -->
+<?php if ($points_asigned > $total_points): ?>
+    <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to save this califications?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to save this
+                        califications?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -396,12 +403,14 @@
             </div>
         </div>
     </div>
-    <?php elseif ($points_asigned > $total_points): ?>
-    <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<?php elseif ($points_asigned > $total_points): ?>
+    <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to save this califications?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to save this
+                        califications?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -416,21 +425,22 @@
             </div>
         </div>
     </div>
-    <?php else : ?>
-    <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to save this califications?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Yes</button>
-                </div>
+<?php else : ?>
+<div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to save this califications?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Yes</button>
             </div>
         </div>
     </div>
+</div>
 <?php endif; ?>
